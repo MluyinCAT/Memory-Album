@@ -144,3 +144,8 @@ MonoBehaviour:
     - name: ScriptNavigatorUI
       pathPrefix: UI
       guid: 735d6aa767879aa469134858c5b2f0a7
+  - Id: Scripts
+    Resources:
+    - name: Profiles/Naninovel/Resources/Naninovel/Text/test
+      pathPrefix: Scripts
+      guid: 1ab9d5ec4ae3cec4e8bc63c3f9db31f0
