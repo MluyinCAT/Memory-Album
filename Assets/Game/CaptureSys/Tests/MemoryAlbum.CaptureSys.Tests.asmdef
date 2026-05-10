@@ -1,0 +1,21 @@
+{
+    "name": "MemoryAlbum.CaptureSys.Tests",
+    "rootNamespace": "MemoryAlbum.CaptureSys.Tests",
+    "references": [
+        "MemoryAlbum.CaptureSys"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false,
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

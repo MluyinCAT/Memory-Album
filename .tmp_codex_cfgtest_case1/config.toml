@@ -1,0 +1,103 @@
+model_provider = "lumioapi"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+disable_response_storage = true
+
+[model_providers.lumioapi]
+name = "lumioapi"
+base_url = "https://api.lumio.games"
+wire_api = "responses"
+requires_openai_auth = true
+
+[mcp_servers.godot]
+command = 'C:\\Program Files\\nodejs\\npx.cmd'
+args = [ "-y", "@coding-solo/godot-mcp" ]
+
+[mcp_servers.godot.env]
+GODOT_PATH = 'D:\\GameDev\\Godot\\Godot_v4.6.2\\Godot_v4.6.2-stable_win64.exe'
+PATH = 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Roaming\\npm'
+
+[mcp_servers.unityMCP]
+url = "http://127.0.0.1:8080/mcp"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-09T18:10:55Z"
+source_type = "local"
+source = '\\?\C:\Users\Administrator\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[windows]
+sandbox = "elevated"
+
+[projects."d:\\gamedev\\godot\\otherprojects\\scrabdackle_learn_godot"]
+trust_level = "trusted"
+
+[projects."d:\\gamedev\\godot\\projects\\booom2026_photomaster_godot"]
+trust_level = "trusted"
+
+[projects."d:\\gamedev\\godot\\projects\\booom2026_photomaster02_godot"]
+trust_level = "trusted"
+
+[projects."d:\\gamedev\\unity\\projects\\memory-album"]
+trust_level = "trusted"
+
+[[skills.config]]
+name = "superpowers:brainstorming"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:dispatching-parallel-agents"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:finishing-a-development-branch"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:executing-plans"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:requesting-code-review"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:receiving-code-review"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:systematic-debugging"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:subagent-driven-development"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:using-git-worktrees"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:test-driven-development"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:verification-before-completion"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:using-superpowers"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:writing-skills"
+enabled = false
+
+[[skills.config]]
+name = "superpowers:writing-plans"
+enabled = false
+
+[features]
+rmcp_client = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
