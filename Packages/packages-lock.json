@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.besty.unity-skills": {
-      "version": "file:D:/GameDev/Unity/插件/Unity-Skills-main/SkillsForUnity",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.unity.timeline": "1.7.7"
-      }
-    },
     "com.coplaydev.unity-mcp": {
       "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
       "depth": 0,

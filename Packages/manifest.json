@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.besty.unity-skills": "file:D:/GameDev/Unity/插件/Unity-Skills-main/SkillsForUnity",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "com.unity.2d.animation": "13.0.4",
     "com.unity.2d.aseprite": "3.0.1",
