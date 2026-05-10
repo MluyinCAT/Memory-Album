@@ -273,6 +273,7 @@ MonoBehaviour:
   inputActionsAsset: {fileID: 0}
   actionMapName: Player
   actionName: Capture
+  clearActionName: ClearCapturePhotos
   storageFolderName: CaptureSys
   occlusionLayers:
     serializedVersion: 2
@@ -467,7 +468,7 @@ GameObject:
   - component: {fileID: 1302}
   - component: {fileID: 1303}
   m_Layer: 0
-  m_Name: Visible Capture Target
+  m_Name: "\u53EF\u4EE5\u88AB\u62CD\u7167\u7269\u54C1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +596,7 @@ GameObject:
   - component: {fileID: 1402}
   - component: {fileID: 1403}
   m_Layer: 0
-  m_Name: Hidden Capture Target
+  m_Name: "\u88AB\u906E\u6321\u7269\u54C1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -722,7 +723,7 @@ GameObject:
   - component: {fileID: 1501}
   - component: {fileID: 1502}
   m_Layer: 0
-  m_Name: Demo Occluder
+  m_Name: "\u906E\u6321\u7269\uFF08\u906E\u6321\u4F4F\u540E\u9762\u7269\u4F53\u7684\u5C04\u7EBF\uFF09"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
