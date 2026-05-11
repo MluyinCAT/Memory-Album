@@ -20,8 +20,6 @@ MonoBehaviour:
     - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Languages:
-  - tag: zh
-    name: Chinese
   - tag: af
     name: Afrikaans
   - tag: af-ZA
@@ -472,6 +470,8 @@ MonoBehaviour:
     name: Xhosa
   - tag: xh-ZA
     name: Xhosa (South Africa)
+  - tag: zh
+    name: Chinese
   - tag: zh-CN
     name: Chinese (S)
   - tag: zh-HK

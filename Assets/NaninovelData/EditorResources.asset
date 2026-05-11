@@ -13,42 +13,42 @@ MonoBehaviour:
   m_Name: EditorResources
   m_EditorClassIdentifier: Elringus.Naninovel.Editor::Naninovel.EditorResources
   resourceCategories:
-  - Id: TextPrinters/4543e03c-2407-46a9-83b4-6b1b9221e9a6
+  - Id: TextPrinters/d97f74d7-f2a5-4bba-bf75-c29955da0ca4
     Resources:
     - name: Dialogue
       pathPrefix: TextPrinters
       guid: 1bc08ccd31adff6439e97161aa6e1d8b
-  - Id: TextPrinters/1a357673-b748-462e-a30b-16e5a49cb187
+  - Id: TextPrinters/7c078145-6e1f-4c79-b9e8-864e1704da24
     Resources:
     - name: Fullscreen
       pathPrefix: TextPrinters
       guid: c87cebd3f0d4f174789cd351ce9591c4
-  - Id: TextPrinters/86d69e42-f000-4c79-b741-7a79cb164a1c
+  - Id: TextPrinters/823b62f2-d282-438c-a640-e3b07157c471
     Resources:
     - name: Wide
       pathPrefix: TextPrinters
       guid: 781828b806deb1e4cbf50ef9de41da10
-  - Id: TextPrinters/151f0e2a-3ed4-479c-83cd-02d3b02957c4
+  - Id: TextPrinters/628d47a8-8a54-49d4-869b-f2fbedf1bb4f
     Resources:
     - name: Chat
       pathPrefix: TextPrinters
       guid: 6f9836a3c4f777741b1962979d97e485
-  - Id: TextPrinters/b9f4af62-fb0a-4ced-a03d-87c93d1fe352
+  - Id: TextPrinters/8b888491-1818-40f2-80e3-9ca117bddb0a
     Resources:
     - name: Bubble
       pathPrefix: TextPrinters
       guid: b47d9659b2be5ee4e95a776f213c9d4b
-  - Id: ChoiceHandlers/8f3782ec-b237-4aa2-bb40-4b89c7106454
+  - Id: ChoiceHandlers/9f9b3f85-c7f7-4ec6-aca0-8c7a17eb9436
     Resources:
     - name: ButtonList
       pathPrefix: ChoiceHandlers
       guid: 1f6aa29000e839c409e6a9c0704adc96
-  - Id: ChoiceHandlers/957c1a86-d9cb-4ca8-9b55-0f2ababa0925
+  - Id: ChoiceHandlers/37f2e274-0a6a-4ebe-888f-ba0f81111764
     Resources:
     - name: ButtonArea
       pathPrefix: ChoiceHandlers
       guid: 4fa6d62f894ae6e4698bfa8af59e7942
-  - Id: ChoiceHandlers/ea9f4085-09de-4a79-8bf3-cce31ac4de6b
+  - Id: ChoiceHandlers/bf245adb-6aff-48e3-84c1-2961ae92f58b
     Resources:
     - name: ChatReply
       pathPrefix: ChoiceHandlers
@@ -146,6 +146,30 @@ MonoBehaviour:
       guid: 735d6aa767879aa469134858c5b2f0a7
   - Id: Scripts
     Resources:
-    - name: test
+    - name: "\u5F00\u573A\u52A8\u753B"
       pathPrefix: Scripts
-      guid: 1ab9d5ec4ae3cec4e8bc63c3f9db31f0
+      guid: 33fbf65ae06dd7641bf3ad539709f050
+  - Id: Backgrounds/044271c1-f236-4152-ae0e-7a990a3e4d45
+    Resources:
+    - name: "\u6807\u9898"
+      pathPrefix: Backgrounds/MainBackground
+      guid: 4cf8a6ca117172545baaebc8700c1adc
+    - name: "\u5F15\u5B50\u5F00\u573A"
+      pathPrefix: Backgrounds/MainBackground
+      guid: c03482e0bf73dd745a6413f1ee32b821
+    - name: "\u75C5\u623F"
+      pathPrefix: Backgrounds/MainBackground
+      guid: 0bf7147f00a983c46bcd6a4711c24fb2
+    - name: test
+      pathPrefix: Backgrounds/MainBackground
+      guid: 47abcc3036bdc0c47b734853bd1e9c3e
+  - Id: Characters/a0283f84-ee31-4861-9cf6-7781999ac7e2
+    Resources:
+    - name: "\u83F2\u6BD4"
+      pathPrefix: "Characters/\u83F2\u6BD4"
+      guid: b8bc25c06ab8fa64d844e1f97ca19d87
+  - Id: Characters/d105233f-3c6c-4c84-9296-cc1172e3319a
+    Resources:
+    - name: Doro
+      pathPrefix: Characters/Doro
+      guid: 0264a321453388942be0fec61282ee54

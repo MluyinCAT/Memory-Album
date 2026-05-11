@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eee5e89299d8f14438f445e2b4d396f2
+guid: 26756207055c3b4469463c2611c95fb9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5269969183366626787
-    second: 1A5(5@C5AG)~))5$2C{)~XY_0
+      213: -4154576617272582609
+    second: futou_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1A5(5@C5AG)~))5$2C{)~XY_0
+      name: futou_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 658
-        height: 439
+        width: 114
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3edb2dffc01b22940800000000000000
-      internalID: 5269969183366626787
+      spriteID: f2ed257149af756c0800000000000000
+      internalID: -4154576617272582609
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1A5(5@C5AG)~))5$2C{)~XY_0: 5269969183366626787
+      futou_0: -4154576617272582609
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -34,7 +34,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    guid: 39e87b11-e07b-45a4-9743-4306b03a07c7
+    guid: 16be7cdd-f40c-4f55-96a0-bd51ede119df
     customData:
       rid: -2
     Pivot: {x: 0.5, y: 0.5}
@@ -77,7 +77,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      guid: 4543e03c-2407-46a9-83b4-6b1b9221e9a6
+      guid: d97f74d7-f2a5-4bba-bf75-c29955da0ca4
       customData:
         rid: -2
       Pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      guid: 1a357673-b748-462e-a30b-16e5a49cb187
+      guid: 7c078145-6e1f-4c79-b9e8-864e1704da24
       customData:
         rid: -2
       Pivot: {x: 0.5, y: 0.5}
@@ -147,7 +147,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      guid: 86d69e42-f000-4c79-b741-7a79cb164a1c
+      guid: 823b62f2-d282-438c-a640-e3b07157c471
       customData:
         rid: -2
       Pivot: {x: 0.5, y: 0.5}
@@ -182,7 +182,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      guid: 151f0e2a-3ed4-479c-83cd-02d3b02957c4
+      guid: 628d47a8-8a54-49d4-869b-f2fbedf1bb4f
       customData:
         rid: -2
       Pivot: {x: 0.5, y: 0.5}
@@ -217,7 +217,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         - Naninovel.ProjectResourceProvider, Elringus.Naninovel.Runtime, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      guid: b9f4af62-fb0a-4ced-a03d-87c93d1fe352
+      guid: 8b888491-1818-40f2-80e3-9ca117bddb0a
       customData:
         rid: -2
       Pivot: {x: 0.5, y: 0.5}

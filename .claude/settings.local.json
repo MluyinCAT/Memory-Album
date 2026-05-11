@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"[System.IO.File]::ReadAllBytes\\('g:\\\\unity projects\\\\Memory Album\\\\Assets\\\\Resources\\\\Naninovel\\\\Text\\\\DefaultUI.txt'\\) | Select-Object -First 4\")",
+      "Bash(xxd \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/Text/DefaultUI.txt\")",
+      "Bash(mkdir -p \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/Fonts\")",
+      "Bash(mkdir -p \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/UI\")",
+      "Bash(mkdir -p \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background\")",
+      "Bash(mkdir -p \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/Characters\")",
+      "Bash(mkdir -p \"g:/unity projects/Memory Album/Assets/Resources/Naninovel/TextPrinters\")",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Fonts/SourceHanSansSC-Medium SDF.asset' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Fonts/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Fonts/SourceHanSansSC-Medium SDF.asset.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Fonts/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Fonts/SourceHanSansSC-Medium.otf' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Fonts/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Fonts/SourceHanSansSC-Medium.otf.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Fonts/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/prefabs/TitleUI.prefab' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/UI/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/prefabs/TitleUI.prefab.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/UI/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background/test.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background/test.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background/引子开场.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background/引子开场.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background/标题.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Background/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Character/Doro.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Characters/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Character/Doro.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Characters/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Character/菲比.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Characters/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Character/菲比.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/Characters/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/something/futou.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/something/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/something/futou.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/something/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/something/相册主题二次元背景图.png' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/something/')",
+      "Bash(mv 'g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/something/相册主题二次元背景图.png.meta' 'g:/unity projects/Memory Album/Assets/Resources/Naninovel/something/')",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Fonts\")",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Configuration\")",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Background\")",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/Character\")",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources/Naninovel/something\")",
+      "Bash(rm -rf \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources\")",
+      "Bash(rm -f \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData/Resources.meta\")",
+      "Bash(mv \"g:/unity projects/Memory Album/Assets/Resources/NaninovelData\" \"g:/unity projects/Memory Album/Assets/NaninovelData\" && echo \"Moved to Assets/NaninovelData\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" status --short -- \"Assets/Resources/Naninovel/\" \"Assets/NaninovelData/\" \"Assets/Resources/NaninovelData/\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" show HEAD:Assets/NaninovelData/Resources/Naninovel/Text/DefaultUI.txt)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" ls-tree -r HEAD -- \"Assets/Resources/Scenario/\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" ls-tree -r HEAD -- \"Assets/NaninovelData/\")",
+      "WebFetch(domain:nani.nanana.cn)",
+      "WebSearch",
+      "Bash(git -C \"g:/unity projects/Memory Album\" log --oneline -20)"
+    ],
+    "additionalDirectories": [
+      "g:\\unity projects\\Memory Album\\Assets\\Resources\\NaninovelData"
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 ﻿<Solution>
   <Project Path="Elringus.Naninovel.Runtime.csproj" />
-  <Project Path="MCPForUnity.Runtime.csproj" />
   <Project Path="Elringus.Naninovel.Editor.csproj" />
-  <Project Path="MCPForUnity.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MemoryAlbum.CaptureSys.csproj" />
   <Project Path="Elringus.Naninovel.E2E.csproj" />
+  <Project Path="MemoryAlbum.CaptureSys.Tests.csproj" />
 </Solution>
