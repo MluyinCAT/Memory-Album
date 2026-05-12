@@ -1,8 +1,10 @@
 ﻿<Solution>
-  <Project Path="Elringus.Naninovel.Runtime.csproj" />
-  <Project Path="Elringus.Naninovel.Editor.csproj" />
+  <Project Path="VNovelizer.Runtime.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="VNovelizer.Editor.csproj" />
+  <Project Path="LitJson.csproj" />
   <Project Path="MemoryAlbum.CaptureSys.csproj" />
-  <Project Path="Elringus.Naninovel.E2E.csproj" />
+  <Project Path="Coffee.UIParticle.csproj" />
+  <Project Path="Coffee.UIParticle.Editor.csproj" />
   <Project Path="MemoryAlbum.CaptureSys.Tests.csproj" />
 </Solution>

@@ -41,7 +41,27 @@
       "Bash(git -C \"g:/unity projects/Memory Album\" ls-tree -r HEAD -- \"Assets/NaninovelData/\")",
       "WebFetch(domain:nani.nanana.cn)",
       "WebSearch",
-      "Bash(git -C \"g:/unity projects/Memory Album\" log --oneline -20)"
+      "Bash(git -C \"g:/unity projects/Memory Album\" log --oneline -20)",
+      "Bash(find \"C:/Users/Lenovo/AppData\" -path \"*/Unity/Editor/Editor.log\" 2>/dev/null | head -3)",
+      "Read(//c/Users/Lenovo/AppData/**)",
+      "Bash(find \"g:/unity editor/6000.3.15f1\" -name \"Unity.exe\" 2>/dev/null)",
+      "Read(//g/unity editor/6000.3.15f1/**)",
+      "Bash(\"g:/unity editor/6000.3.15f1/Editor/Unity.exe\" -quit -batchmode -projectPath \"g:/unity projects/Memory Album\" -executeMethod MemoryAlbum.Editor.AddressablesBuildTrigger.BuildAddressablesContent -logFile \"g:/unity projects/Memory Album/Logs/AddressablesBuild.log\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" log --oneline -10)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" ls-files -- '*.csproj')",
+      "Bash(git -C \"g:/unity projects/Memory Album\" status)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff --stat)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff --cached --stat)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" log --oneline -5)",
+      "Bash(grep -v \"^$\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff --name-only)",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff -- \"Assets/TextMesh Pro/Resources/TMP Settings.asset\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff -- \"Assets/TextMesh Pro/Resources/Fonts & Materials/\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" ls-files -- \"Assets/NaninovelData/\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" add \"Assets/TextMesh Pro/Resources/TMP Settings.asset\" \"Assets/NaninovelData/\" \"Assets/NaninovelData.meta\")",
+      "Bash(git -C \"g:/unity projects/Memory Album\" diff --cached --name-only)",
+      "Bash(git -C 'g:/unity projects/Memory Album' commit -m 'fix: 切换默认字体为SourceHanSansSC，清理Naninovel残留文件')",
+      "Bash(git -C \"g:/unity projects/Memory Album\" push)"
     ],
     "additionalDirectories": [
       "g:\\unity projects\\Memory Album\\Assets\\Resources\\NaninovelData"
