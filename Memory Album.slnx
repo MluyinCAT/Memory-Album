@@ -6,5 +6,6 @@
   <Project Path="MemoryAlbum.CaptureSys.csproj" />
   <Project Path="Coffee.UIParticle.csproj" />
   <Project Path="Coffee.UIParticle.Editor.csproj" />
+  <Project Path="MemoryAlbum.PhotoAlbum.csproj" />
   <Project Path="MemoryAlbum.CaptureSys.Tests.csproj" />
 </Solution>

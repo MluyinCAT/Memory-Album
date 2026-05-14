@@ -1,0 +1,4 @@
+ID,Speaker,HeadProfile,CharLeft,CharMid,CharRight,Text,Background,BGM,Voice,Command,Note
+P001,,hide,hide,hide,hide,你翻开了那个旧书包。里面有一张泛黄的照片…,,,false,,测试拍照回调
+P002,,hide,hide,hide,hide,照片上是两个孩子的合影，笑得无比灿烂。,,,false,,测试文本2
+P003,,hide,hide,hide,hide,似乎勾起了某些遥远的记忆。,,,false,loadscene(PhotoExploration),返回探索场景

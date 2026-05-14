@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VNMainMenu.unity
     guid: 0e7b1b819b2c84a4c9df8a7c1fb3607e
+  - enabled: 1
+    path: Assets/Scenes/PhotoExploration.unity
+    guid: 30dc763bb8fdc434ebeb1875e7468f19
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 002440b62533db34da31e9c121de5f87, type: 2}
