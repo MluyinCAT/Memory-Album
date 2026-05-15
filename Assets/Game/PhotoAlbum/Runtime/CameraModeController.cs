@@ -17,6 +17,11 @@ namespace MemoryAlbum.PhotoAlbum
         [SerializeField] private float moveSpeed = 8f;
         [SerializeField] private SpriteRenderer backgroundRenderer;
 
+        [Header("缩放")]
+        [SerializeField] private float zoomSpeed = 10f;
+        [SerializeField] private float minZoom = 20f;
+        [SerializeField] private float maxZoom = 500f;
+
         [Header("拍照")]
         [SerializeField] private PhotoCaptureController captureController;
 
@@ -67,6 +72,21 @@ namespace MemoryAlbum.PhotoAlbum
                 pos += (Vector3)(_moveInput.normalized * moveSpeed * Time.deltaTime);
                 _resolvedCapture.transform.position = ClampToBackground(pos);
             }
+
+            // Q 缩小 / E 放大
+            float zoomDelta = 0f;
+            if (kbd != null)
+            {
+                if (kbd.qKey.isPressed) zoomDelta -= zoomSpeed * Time.deltaTime;
+                if (kbd.eKey.isPressed) zoomDelta += zoomSpeed * Time.deltaTime;
+            }
+            if (zoomDelta != 0f)
+            {
+                float newSize = Mathf.Clamp(_resolvedCapture.orthographicSize + zoomDelta, minZoom, maxZoom);
+                _resolvedCapture.orthographicSize = newSize;
+                // 缩放后重新 clamp 位置
+                _resolvedCapture.transform.position = ClampToBackground(_resolvedCapture.transform.position);
+            }
         }
 
         private Vector3 ClampToBackground(Vector3 pos)
@@ -107,6 +127,11 @@ namespace MemoryAlbum.PhotoAlbum
 
             if (_resolvedMain != null)
                 _resolvedMain.enabled = !active;
+
+            // 切 Canvas 的渲染相机，让 UI 跟随模式相机
+            var canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+            if (canvas != null)
+                canvas.worldCamera = active ? _resolvedCapture : _resolvedMain;
 
             if (viewfinderOverlay != null)
                 viewfinderOverlay.SetActive(active);

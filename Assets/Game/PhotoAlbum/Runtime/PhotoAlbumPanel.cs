@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace MemoryAlbum.PhotoAlbum
@@ -25,6 +26,20 @@ namespace MemoryAlbum.PhotoAlbum
         [SerializeField] private string puzzlePanelPath = "VNovelizerRes/VNPrefabs/UI/PhotoPuzzle";
 
         private PhotoAlbumManager _albumManager;
+
+        private void Update()
+        {
+            if (UnityEngine.InputSystem.Keyboard.current?.escapeKey.wasPressedThisFrame == true)
+            {
+                HideMe();
+            }
+        }
+
+        public override void HideMe()
+        {
+            base.HideMe();
+            gameObject.SetActive(false);
+        }
 
         protected override void Awake()
         {

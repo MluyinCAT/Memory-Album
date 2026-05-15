@@ -124,19 +124,25 @@ namespace MemoryAlbum.PhotoAlbum
                 yield break;
             }
 
-            if (PhotoAlbumManager.GetInstance().IsPhotoCollected(matchedTarget.photoId))
+            bool alreadyCollected = PhotoAlbumManager.GetInstance().IsPhotoCollected(matchedTarget.photoId);
+            Debug.Log("[PhotoCapture] IsPhotoCollected=" + alreadyCollected);
+            if (alreadyCollected)
             {
                 ShowDialog("已经拍过了");
                 _captureInProgress = false;
                 yield break;
             }
 
+            Debug.Log("[PhotoCapture] 开始截图...");
             yield return _photoCaptureService.CapturePhotoBytes(_ => { });
+            Debug.Log("[PhotoCapture] 截图完成，开始收集...");
 
-            PhotoAlbumManager.GetInstance().CollectPhoto(matchedTarget.photoId);
+            bool collected = PhotoAlbumManager.GetInstance().CollectPhoto(matchedTarget.photoId);
+            Debug.Log("[PhotoCapture] CollectPhoto result=" + collected);
 
             if (!string.IsNullOrEmpty(matchedTarget.vnScriptName))
             {
+                Debug.Log("[PhotoCapture] 跳转VN: " + matchedTarget.vnScriptName);
                 UIManager.GetInstance().HidePanel("PhotoAlbumPanel");
                 VNManager.GetInstance().StartGame(
                     matchedTarget.vnScriptName,
@@ -154,5 +160,6 @@ namespace MemoryAlbum.PhotoAlbum
         }
 
         public Camera GetCamera() => _resolvedCamera;
+        public float GetDetectionZoneSize() => detectionZoneSize;
     }
 }

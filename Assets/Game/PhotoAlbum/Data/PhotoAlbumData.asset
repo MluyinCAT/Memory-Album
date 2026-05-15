@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f30a5cce87e614bbcba4769bc03443, type: 3}
   m_Name: PhotoAlbumData
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoAlbumData
-  entries: []
+  entries:
+  - photoId: photo_01
+    photoSprite: {fileID: -2668353066224751541, guid: c3e0db55f864b364e8ef78ed26e839d0, type: 3}
+    photoName: "\u65E7\u4E66\u5305"
+    photoDescription: "\u4E00\u4E2A\u892A\u8272\u7684\u65E7\u4E66\u5305\uFF0C\u91CC\u9762\u4F3C\u4E4E\u8FD8\u88C5\u7740\u4EC0\u4E48\u4E1C\u897F\u3002"
+  - photoId: photo_02
+    photoSprite: {fileID: 346722570245876495, guid: c614a8df347a31442b1261ebfb567b21, type: 3}
+    photoName: "\u6DF1\u84DD\u96E8\u4F1E"
+    photoDescription: "\u4E00\u628A\u6DF1\u84DD\u8272\u7684\u96E8\u4F1E\uFF0C\u66FE\u7ECF\u4E3A\u67D0\u4EBA\u906E\u98CE\u6321\u96E8\u3002"
+  - photoId: photo_03
+    photoSprite: {fileID: 8271860525846309575, guid: 9f8acc49a7d361040b2ab8218272176c, type: 3}
+    photoName: "\u7CBE\u7F8E\u5DE7\u514B\u529B"
+    photoDescription: "\u4E00\u76D2\u5305\u88C5\u7CBE\u7F8E\u7684\u5DE7\u514B\u529B\uFF0C\u4E1D\u5E26\u5DF2\u7ECF\u892A\u8272\u3002"
+  - photoId: photo_04
+    photoSprite: {fileID: 5243857091098509940, guid: 70ebf68b09dd02540acc920923c2e2bb, type: 3}
+    photoName: "\u6DF1\u7EA2\u9886\u5E26"
+    photoDescription: "\u4E00\u6761\u6DF1\u7EA2\u8272\u9886\u5E26\uFF0C\u50CF\u662F\u91CD\u8981\u573A\u5408\u7684\u88C5\u675F\u3002"
+  - photoId: photo_05
+    photoSprite: {fileID: -2959953537990747553, guid: 6c559a913f5fbd5429a4e1b092e7be2b, type: 3}
+    photoName: "\u65E7\u6821\u670D"
+    photoDescription: "\u4E00\u4EF6\u6821\u670D\uFF0C\u8896\u53E3\u5904\u6709\u78E8\u635F\u7684\u75D5\u8FF9\u3002"
+  - photoId: photo_06
+    photoSprite: {fileID: -976696538675964118, guid: 04273e19c8284f84f9b7eea7edfff493, type: 3}
+    photoName: "\u836F\u54C1\u7F50"
+    photoDescription: "\u4E00\u53EA\u6DF1\u8910\u8272\u836F\u74F6\uFF0C\u6807\u7B7E\u5DF2\u7ECF\u6CDB\u9EC4\u3002"
