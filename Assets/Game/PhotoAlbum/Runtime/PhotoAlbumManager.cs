@@ -61,5 +61,13 @@ namespace MemoryAlbum.PhotoAlbum
                 if (IsPhotoCollected(id)) result.Add(id);
             return result;
         }
+
+        public void ResetAllPhotos()
+        {
+            foreach (var id in AllPhotoIds)
+                VNAPI.SetBoolFlag(CollectedFlagPrefix + id, false);
+            VNAPI.SetBoolFlag(PuzzleUnlockedFlag, false);
+            Debug.Log("[PhotoAlbum] 已重置全部照片收集状态");
+        }
     }
 }
