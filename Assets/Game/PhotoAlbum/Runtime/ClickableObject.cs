@@ -14,6 +14,10 @@ namespace MemoryAlbum.PhotoAlbum
         [Header("可选照片关联")]
         public string relatedPhotoId;
 
+        [Header("点击标记")]
+        [Tooltip("点击后自动设为true的flag，可用于 puzzle 必要条件")]
+        public string setFlagOnClick;
+
         [Header("高亮")]
         public Color highlightColor = new Color(1f, 1f, 0.6f, 1f);
 

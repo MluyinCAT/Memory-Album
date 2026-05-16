@@ -15,6 +15,13 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void Awake()
         {
+            // 仅在新游戏时重置状态（避免返回场景时清空已收集的照片）
+            if (!VNovelizer.Core.API.VNAPI.GetBoolFlag("photo_session_started"))
+            {
+                PhotoAlbumManager.GetInstance().ResetAllPhotos();
+                VNovelizer.Core.API.VNAPI.SetBoolFlag("photo_session_started", true);
+            }
+
             if (settingsBtn != null)
                 settingsBtn.onClick.AddListener(OnSettingsClicked);
             if (captureBtn != null)
@@ -40,20 +47,36 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void OnAlbumClicked()
         {
-            var albumPanel = UIManager.GetInstance().GetPanel<PhotoAlbumPanel>("PhotoAlbumPanel");
-            if (albumPanel != null)
+            var existing = GameObject.Find("PhotoAlbumUI");
+            if (existing != null)
             {
-                albumPanel.ShowMe();
+                existing.SetActive(true);
+                existing.GetComponent<PhotoAlbumPanel>()?.ShowMe();
+                return;
             }
-            else
+
+            var prefab = Resources.Load<GameObject>("VNovelizerRes/VNPrefabs/UI/PhotoAlbum/PhotoAlbumPanel");
+            if (prefab == null)
             {
-                UIManager.GetInstance().ShowPanel<PhotoAlbumPanel>(
-                    "PhotoAlbumPanel",
-                    "VNovelizerRes/VNPrefabs/UI/PhotoAlbum",
-                    E_UI_Layer.Top,
-                    panel => panel?.ShowMe()
-                );
+                Debug.LogError("[PhotoExplorationUI] 找不到相册预制体");
+                return;
             }
+
+            var sys = GameObject.Find("Canvas")?.transform.Find("System");
+            var inst = Instantiate(prefab, sys);
+            inst.name = "PhotoAlbumUI";
+
+            var panel = inst.GetComponent<PhotoAlbumPanel>();
+            if (panel != null)
+            {
+                var data = Resources.Load<PhotoAlbumData>("VNovelizerRes/VNPrefabs/UI/PhotoAlbum/PhotoAlbumData");
+                typeof(PhotoAlbumPanel).GetField("albumData",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    ?.SetValue(panel, data);
+            }
+
+            inst.SetActive(true);
+            panel?.ShowMe();
         }
 
         private void OnDestroy()

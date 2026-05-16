@@ -135,6 +135,17 @@ namespace MemoryAlbum.PhotoAlbum
 
             if (viewfinderOverlay != null)
                 viewfinderOverlay.SetActive(active);
+
+            // 隐藏/显示Top层的按钮
+            var top = GameObject.Find("Canvas")?.transform.Find("Top");
+            if (top != null)
+            {
+                foreach (Transform child in top)
+                {
+                    if (child.name != "ViewfinderOverlay")
+                        child.gameObject.SetActive(!active);
+                }
+            }
         }
     }
 }

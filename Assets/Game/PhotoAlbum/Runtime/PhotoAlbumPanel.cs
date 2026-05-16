@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,11 +21,6 @@ namespace MemoryAlbum.PhotoAlbum
         [SerializeField] private TMP_Text detailNameText;
         [SerializeField] private TMP_Text detailDescText;
         [SerializeField] private Button detailCloseBtn;
-
-        [Header("拼凑真相")]
-        [SerializeField] private GameObject puzzleBtn;
-        [SerializeField] private Button puzzleButton;
-        [SerializeField] private string puzzlePanelPath = "VNovelizerRes/VNPrefabs/UI/PhotoPuzzle";
 
         private PhotoAlbumManager _albumManager;
 
@@ -48,15 +45,61 @@ namespace MemoryAlbum.PhotoAlbum
             _albumManager = PhotoAlbumManager.GetInstance();
 
             if (detailCloseBtn != null) detailCloseBtn.onClick.AddListener(HideDetail);
-            if (puzzleButton != null) puzzleButton.onClick.AddListener(OnPuzzleClicked);
-
             if (detailPanel != null) detailPanel.SetActive(false);
+
+            // Auto-detect slots from FilmStrip children if array is empty
+            if (photoSlots == null || photoSlots.Length == 0)
+            {
+                var film = transform.Find("FilmStrip");
+                if (film != null)
+                {
+                    var list = new System.Collections.Generic.List<PhotoSlot>();
+                    for (int i = 0; i < film.childCount; i++)
+                    {
+                        var child = film.GetChild(i);
+                        if (!child.name.StartsWith("Slot_")) continue;
+                        var btn = child.GetComponent<UnityEngine.UI.Button>();
+                        var thumb = child.Find("Thumbnail")?.GetComponent<UnityEngine.UI.Image>();
+                        var mark = child.Find("CollectedMark");
+                        list.Add(new PhotoSlot { slotButton = btn, thumbnailImage = thumb, collectedMark = mark?.gameObject });
+                    }
+                    photoSlots = list.ToArray();
+                }
+            }
 
             for (int i = 0; i < photoSlots.Length; i++)
             {
                 int index = i;
                 if (photoSlots[i] != null && photoSlots[i].slotButton != null)
                     photoSlots[i].slotButton.onClick.AddListener(() => OnSlotClicked(index));
+            }
+
+            // Wire ClueBoard puzzle slots
+            var pzPanel = GetComponent<PhotoPuzzlePanel>();
+            if (pzPanel != null)
+            {
+                // Auto-detect puzzle slots from ClueBoard children
+                var cb = transform.Find("ClueBoard");
+                var pzSlots = typeof(PhotoPuzzlePanel).GetField("slots",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    ?.GetValue(pzPanel) as PuzzleSlot[];
+                if (cb != null && (pzSlots == null || pzSlots.Length == 0))
+                {
+                    var pzList = new List<PuzzleSlot>();
+                    for (int i = 0; i < cb.childCount; i++)
+                    {
+                        var child = cb.GetChild(i);
+                        if (!child.name.StartsWith("PuzzleSlot_")) continue;
+                        var btn = child.GetComponent<UnityEngine.UI.Button>();
+                        var img = child.Find("Thumbnail")?.GetComponent<UnityEngine.UI.Image>();
+                        var hf = child.Find("HighlightFrame")?.gameObject;
+                        pzList.Add(new PuzzleSlot { slotButton = btn, photoImage = img, highlightFrame = hf });
+                    }
+                    typeof(PhotoPuzzlePanel).GetField("slots",
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                        ?.SetValue(pzPanel, pzList.ToArray());
+                }
+                pzPanel.WireSlotClicks();
             }
         }
 
@@ -79,18 +122,10 @@ namespace MemoryAlbum.PhotoAlbum
                 bool collected = photoId != null && _albumManager.IsPhotoCollected(photoId);
 
                 if (collected)
-                {
-                    var entry = albumData.entries[i];
-                    slot.SetCollected(entry.photoSprite, entry.photoName);
-                }
+                    slot.SetCollected(albumData.entries[i].photoSprite, albumData.entries[i].photoName);
                 else
-                {
                     slot.SetLocked();
-                }
             }
-
-            if (puzzleBtn != null)
-                puzzleBtn.SetActive(_albumManager.PuzzleUnlocked);
         }
 
         private void OnSlotClicked(int index)
@@ -100,7 +135,12 @@ namespace MemoryAlbum.PhotoAlbum
             var entry = albumData.entries[index];
             if (!_albumManager.IsPhotoCollected(entry.photoId)) return;
 
-            ShowDetail(entry);
+            // 选取照片：通知 PuzzlePanel
+            var puzzle = GetComponent<PhotoPuzzlePanel>();
+            if (puzzle != null)
+            {
+                puzzle.PickUpPhoto(entry.photoId);
+            }
         }
 
         private void ShowDetail(PhotoEntry entry)
@@ -118,20 +158,9 @@ namespace MemoryAlbum.PhotoAlbum
             if (detailPanel != null) detailPanel.SetActive(false);
         }
 
-        private void OnPuzzleClicked()
-        {
-            UIManager.GetInstance().ShowPanel<PhotoPuzzlePanel>(
-                "PhotoPuzzlePanel",
-                puzzlePanelPath,
-                E_UI_Layer.Top,
-                null
-            );
-        }
-
         private void OnDestroy()
         {
             if (detailCloseBtn != null) detailCloseBtn.onClick.RemoveListener(HideDetail);
-            if (puzzleButton != null) puzzleButton.onClick.RemoveListener(OnPuzzleClicked);
             if (photoSlots != null)
             {
                 foreach (var slot in photoSlots)
@@ -150,27 +179,34 @@ namespace MemoryAlbum.PhotoAlbum
         public GameObject lockedOverlay;
         public GameObject collectedMark;
 
+        // Cache slot background image
+        private Image _bgImage;
+        private Image BgImage
+        {
+            get
+            {
+                if (_bgImage == null && slotButton != null)
+                    _bgImage = slotButton.GetComponent<Image>();
+                return _bgImage;
+            }
+        }
+
         public void SetLocked()
         {
-            if (thumbnailImage != null)
-            {
-                thumbnailImage.sprite = null;
-                thumbnailImage.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
-            }
-            if (nameText != null) nameText.text = "???";
-            if (lockedOverlay != null) lockedOverlay.SetActive(true);
+            if (thumbnailImage != null) thumbnailImage.gameObject.SetActive(false);
             if (collectedMark != null) collectedMark.SetActive(false);
+            if (BgImage != null) BgImage.gameObject.SetActive(false);
         }
 
         public void SetCollected(Sprite sprite, string name)
         {
+            if (BgImage != null) BgImage.gameObject.SetActive(true);
             if (thumbnailImage != null)
             {
                 thumbnailImage.sprite = sprite;
                 thumbnailImage.color = Color.white;
+                thumbnailImage.gameObject.SetActive(true);
             }
-            if (nameText != null) nameText.text = name;
-            if (lockedOverlay != null) lockedOverlay.SetActive(false);
             if (collectedMark != null) collectedMark.SetActive(true);
         }
     }

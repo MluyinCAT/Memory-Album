@@ -1,0 +1,4 @@
+ID,Speaker,HeadProfile,CharLeft,CharMid,CharRight,Text,Background,BGM,Voice,Command,Note
+P001,,hide,hide,hide,hide,一切从那间布满灰尘的房间开始。,,,false,resetphotos,清除收集状态
+P002,,hide,hide,hide,hide,这里似乎藏着许多记忆的碎片，等待着被重新发现……,,,false,,
+P003,,hide,hide,hide,hide,也许，仔细看看周围，能找到些什么。,,,false,loadscene(PhotoExploration),进入探索场景

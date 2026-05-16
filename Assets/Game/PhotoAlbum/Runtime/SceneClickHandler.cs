@@ -52,6 +52,9 @@ namespace MemoryAlbum.PhotoAlbum
             _dialogueVisible = true;
             infoPanel?.ShowInfo(obj);
             SetButtonsVisible(false);
+
+            if (!string.IsNullOrEmpty(obj.setFlagOnClick))
+                VNovelizer.Core.API.VNAPI.SetBoolFlag(obj.setFlagOnClick, true);
         }
 
         private void HideDialogue()

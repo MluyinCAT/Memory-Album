@@ -56,11 +56,9 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void HandleCaptureInput()
         {
-            Debug.Log("[PhotoCapture] 空格键收到");
-            if (_captureInProgress) { Debug.Log("[PhotoCapture] 上一次拍照未完成，跳过"); return; }
-            if (cameraMode == null) { Debug.Log("[PhotoCapture] cameraMode 引用为空！"); return; }
-            if (!cameraMode.IsPhotoMode) { Debug.Log("[PhotoCapture] 不在拍照模式，跳过"); return; }
-            Debug.Log("[PhotoCapture] 开始拍照检测...");
+            if (_captureInProgress) return;
+            if (cameraMode == null) return;
+            if (!cameraMode.IsPhotoMode) return;
             StartCoroutine(CaptureRoutine());
         }
 
@@ -90,60 +88,53 @@ namespace MemoryAlbum.PhotoAlbum
 
             var detector = new CaptureDetector(CaptureRegistry.Instance, occlusionLayers.value);
             var result = detector.Detect(_resolvedCamera);
-            Debug.Log("[PhotoCapture] 检测完成, VisibleObjects数量=" + result.VisibleObjects.Count);
 
             PhotoTarget matchedTarget = null;
             foreach (var snapshot in result.VisibleObjects)
             {
-                if (snapshot.Source == null) { Debug.Log("[PhotoCapture] snapshot.Source为null, 跳过"); continue; }
+                if (snapshot.Source == null) continue;
 
                 Vector3 targetPoint = snapshot.Source.GetTargetPoint();
-                Vector3 vp = _resolvedCamera.WorldToViewportPoint(targetPoint);
-                Debug.Log("[PhotoCapture] 物体=" + snapshot.Source.name + " objectId=" + snapshot.Source.ObjectId + " worldPos=" + targetPoint + " viewport=" + vp + " inZone=" + IsInsideDetectionZone(targetPoint));
-
                 if (!IsInsideDetectionZone(targetPoint)) continue;
 
                 var target = snapshot.Source.GetComponent<PhotoTarget>();
                 if (target != null && target.isKeyTarget)
                 {
                     matchedTarget = target;
-                    Debug.Log("[PhotoCapture] 匹配到关键目标: " + target.photoId);
                     break;
-                }
-                else
-                {
-                    Debug.Log("[PhotoCapture] PhotoTarget=" + (target != null) + " isKey=" + (target != null ? target.isKeyTarget : false));
                 }
             }
 
             if (matchedTarget == null)
             {
-                Debug.Log("[PhotoCapture] 未匹配到关键目标，弹出提示");
                 ShowDialog("什么都没拍到");
                 _captureInProgress = false;
                 yield break;
             }
 
-            bool alreadyCollected = PhotoAlbumManager.GetInstance().IsPhotoCollected(matchedTarget.photoId);
-            Debug.Log("[PhotoCapture] IsPhotoCollected=" + alreadyCollected);
-            if (alreadyCollected)
+            if (PhotoAlbumManager.GetInstance().IsPhotoCollected(matchedTarget.photoId))
             {
                 ShowDialog("已经拍过了");
                 _captureInProgress = false;
                 yield break;
             }
 
-            Debug.Log("[PhotoCapture] 开始截图...");
             yield return _photoCaptureService.CapturePhotoBytes(_ => { });
-            Debug.Log("[PhotoCapture] 截图完成，开始收集...");
-
-            bool collected = PhotoAlbumManager.GetInstance().CollectPhoto(matchedTarget.photoId);
-            Debug.Log("[PhotoCapture] CollectPhoto result=" + collected);
+            PhotoAlbumManager.GetInstance().CollectPhoto(matchedTarget.photoId);
 
             if (!string.IsNullOrEmpty(matchedTarget.vnScriptName))
             {
-                Debug.Log("[PhotoCapture] 跳转VN: " + matchedTarget.vnScriptName);
                 UIManager.GetInstance().HidePanel("PhotoAlbumPanel");
+
+                // 淡出到黑
+                var fade = GameObject.Find("ScreenFade")?.GetComponent<UnityEngine.UI.Image>();
+                if (fade != null)
+                {
+                    float t = 0f;
+                    while (t < 1.5f) { t += Time.deltaTime; fade.color = new Color(0, 0, 0, t / 1.5f); yield return null; }
+                    fade.color = Color.black;
+                }
+
                 VNManager.GetInstance().StartGame(
                     matchedTarget.vnScriptName,
                     string.IsNullOrEmpty(matchedTarget.vnStartLineID) ? "" : matchedTarget.vnStartLineID

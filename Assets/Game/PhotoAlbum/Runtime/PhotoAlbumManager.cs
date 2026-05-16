@@ -67,7 +67,8 @@ namespace MemoryAlbum.PhotoAlbum
             foreach (var id in AllPhotoIds)
                 VNAPI.SetBoolFlag(CollectedFlagPrefix + id, false);
             VNAPI.SetBoolFlag(PuzzleUnlockedFlag, false);
-            Debug.Log("[PhotoAlbum] 已重置全部照片收集状态");
+            VNAPI.SetBoolFlag("photo_session_started", false);
+            VNAPI.SetBoolFlag("read_doll", false);
         }
     }
 }

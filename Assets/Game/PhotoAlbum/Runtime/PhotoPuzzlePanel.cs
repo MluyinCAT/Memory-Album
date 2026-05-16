@@ -11,74 +11,69 @@ namespace MemoryAlbum.PhotoAlbum
         [SerializeField] private PhotoAlbumData albumData;
         [SerializeField] private PhotoPuzzleData puzzleData;
 
-        [Header("排列槽位")]
+        [Header("ClueBoard 槽位")]
         [SerializeField] private PuzzleSlot[] slots;
 
         [Header("操作按钮")]
         [SerializeField] private Button confirmBtn;
         [SerializeField] private Button resetBtn;
-        [SerializeField] private Button closeBtn;
 
-        [Header("反馈")]
-        [SerializeField] private DialogPopup dialogPopup;
-
-        private readonly List<string> _currentOrder = new List<string>();
-        private int _selectedSlotIndex = -1;
+        // 每个槽位存放的 photoId，空槽为 null
+        private readonly string[] _placedPhotoIds = new string[6];
+        // 当前从FilmStrip选取中的 photoId
+        private string _heldPhotoId;
 
         protected override void Awake()
         {
             base.Awake();
-
-            var manager = PhotoAlbumManager.GetInstance();
-            foreach (var photoId in manager.AllPhotoIds)
-                _currentOrder.Add(photoId);
-
-            for (int i = 0; i < slots.Length; i++)
-            {
-                int index = i;
-                if (slots[i]?.slotButton != null)
-                    slots[i].slotButton.onClick.AddListener(() => OnSlotClicked(index));
-            }
-
+            Debug.Log("[Puzzle] Awake - slots=" + (slots != null ? slots.Length : -1)
+                + " confirmBtn=" + (confirmBtn != null) + " resetBtn=" + (resetBtn != null)
+                + " puzzleData=" + (puzzleData != null) + " albumData=" + (albumData != null));
             if (confirmBtn != null) confirmBtn.onClick.AddListener(OnConfirmClicked);
-            if (resetBtn != null) resetBtn.onClick.AddListener(ResetOrder);
-            if (closeBtn != null) closeBtn.onClick.AddListener(ClosePanel);
+            if (resetBtn != null) resetBtn.onClick.AddListener(ResetAll);
+            for (int i = 0; i < slots.Length; i++) _placedPhotoIds[i] = null;
+            _heldPhotoId = null;
         }
 
-        public override void ShowMe()
+        public void PickUpPhoto(string photoId)
         {
-            base.ShowMe();
-            ResetOrder();
+            // Already holding something? Put it back
+            if (!string.IsNullOrEmpty(_heldPhotoId))
+                ReturnPhoto(_heldPhotoId);
+            _heldPhotoId = photoId;
+            RefreshAllSlots();
         }
 
-        private void OnSlotClicked(int index)
+        public void ClearHeld()
         {
-            if (_selectedSlotIndex < 0)
-            {
-                _selectedSlotIndex = index;
-                HighlightSlot(index, true);
-            }
-            else if (_selectedSlotIndex == index)
-            {
-                _selectedSlotIndex = -1;
-                HighlightSlot(index, false);
-            }
-            else
-            {
-                var temp = _currentOrder[_selectedSlotIndex];
-                _currentOrder[_selectedSlotIndex] = _currentOrder[index];
-                _currentOrder[index] = temp;
+            _heldPhotoId = null;
+            RefreshAllSlots();
+        }
 
-                HighlightSlot(_selectedSlotIndex, false);
-                _selectedSlotIndex = -1;
+        private void ReturnPhoto(string photoId)
+        {
+            // Nothing to do for FilmStrip - the photo just goes back to available
+        }
+
+        private void OnSlotClicked(int index, PuzzleSlot slot)
+        {
+            if (!string.IsNullOrEmpty(_heldPhotoId))
+            {
+                // Placing a photo into this slot
+                // If slot already has a photo, return it first
+                if (!string.IsNullOrEmpty(_placedPhotoIds[index]))
+                    ReturnPhoto(_placedPhotoIds[index]);
+                _placedPhotoIds[index] = _heldPhotoId;
+                _heldPhotoId = null;
                 RefreshAllSlots();
             }
-        }
-
-        private void HighlightSlot(int index, bool highlight)
-        {
-            if (index < 0 || index >= slots.Length || slots[index]?.highlightFrame == null) return;
-            slots[index].highlightFrame.SetActive(highlight);
+            else if (!string.IsNullOrEmpty(_placedPhotoIds[index]))
+            {
+                // Pick up photo from slot to return it
+                ReturnPhoto(_placedPhotoIds[index]);
+                _placedPhotoIds[index] = null;
+                RefreshAllSlots();
+            }
         }
 
         private void RefreshAllSlots()
@@ -86,9 +81,8 @@ namespace MemoryAlbum.PhotoAlbum
             for (int i = 0; i < slots.Length; i++)
             {
                 if (slots[i] == null) continue;
-                string photoId = i < _currentOrder.Count ? _currentOrder[i] : null;
-
-                if (albumData != null && albumData.TryGetEntry(photoId, out var entry))
+                var pid = _placedPhotoIds[i];
+                if (!string.IsNullOrEmpty(pid) && albumData != null && albumData.TryGetEntry(pid, out var entry))
                     slots[i].SetPhoto(entry.photoSprite, entry.photoName);
                 else
                     slots[i].SetEmpty();
@@ -97,53 +91,109 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void OnConfirmClicked()
         {
+            Debug.Log("[Puzzle] === OnConfirmClicked ===");
+            Debug.Log("[Puzzle] puzzleData=" + (puzzleData != null));
             if (puzzleData == null) return;
 
-            var matched = puzzleData.MatchSequence(_currentOrder);
+            var order = new List<string>();
+            for (int i = 0; i < 6; i++)
+            {
+                Debug.Log("[Puzzle] Slot[" + i + "]=" + (_placedPhotoIds[i] ?? "EMPTY"));
+                if (string.IsNullOrEmpty(_placedPhotoIds[i])) break;
+                order.Add(_placedPhotoIds[i]);
+            }
+
+            Debug.Log("[Puzzle] Order count=" + order.Count + " seqs=" + puzzleData.validSequences.Count);
+            for (int i = 0; i < order.Count; i++) Debug.Log("[Puzzle]   [" + i + "] " + order[i]);
+
+            if (order.Count < 6)
+            {
+                ShowHint("请将所有照片放入线索板");
+                return;
+            }
+
+            var matched = puzzleData.MatchSequence(order);
+            Debug.Log("[Puzzle] Matched=" + (matched != null ? matched.endingScriptName : "NULL"));
+
             if (matched != null)
             {
-                ClosePanel();
+                if (!string.IsNullOrEmpty(puzzleData.requiredItemFlag)
+                    && !VNovelizer.Core.API.VNAPI.GetBoolFlag(puzzleData.requiredItemFlag))
+                {
+                    Debug.Log("[Puzzle] Required item not read: " + puzzleData.requiredItemFlag);
+                    ShowHint(puzzleData.requiredItemHint);
+                    return;
+                }
+                Debug.Log("[Puzzle] Starting game: " + matched.endingScriptName);
                 VNManager.GetInstance().StartGame(matched.endingScriptName);
             }
             else
             {
-                if (dialogPopup != null)
-                    dialogPopup.Show("这样显然不合理");
+                var hints = puzzleData.GetErrorHints(order);
+                Debug.Log("[Puzzle] Error hints count=" + hints.Count);
+                if (hints.Count > 0)
+                    ShowHint(string.Join("\n", hints));
+                else
+                    ShowHint("这样显然不合理");
             }
         }
 
-        private void ResetOrder()
+        private void ShowHint(string message)
         {
-            _currentOrder.Clear();
-            foreach (var photoId in PhotoAlbumManager.GetInstance().AllPhotoIds)
-                _currentOrder.Add(photoId);
+            var dlg = GameObject.Find("DialogPopup")?.GetComponent<DialogPopup>();
+            if (dlg != null) dlg.Show(message);
+        }
 
-            _selectedSlotIndex = -1;
+        private void ResetAll()
+        {
+            for (int i = 0; i < 6; i++) _placedPhotoIds[i] = null;
+            _heldPhotoId = null;
             RefreshAllSlots();
         }
 
-        private void ClosePanel()
+        public void WireSlotClicks()
         {
-            UIManager.GetInstance().HidePanel("PhotoPuzzlePanel");
-        }
-
-        public override void HideMe()
-        {
-            base.HideMe();
-            _selectedSlotIndex = -1;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i] == null) continue;
+                int index = i;
+                var slot = slots[i];
+                if (slot.slotButton != null)
+                {
+                    slot.slotButton.onClick.RemoveAllListeners();
+                    slot.slotButton.onClick.AddListener(() => OnSlotClicked(index, slot));
+                }
+            }
         }
 
         private void OnDestroy()
         {
             if (confirmBtn != null) confirmBtn.onClick.RemoveListener(OnConfirmClicked);
-            if (resetBtn != null) resetBtn.onClick.RemoveListener(ResetOrder);
-            if (closeBtn != null) closeBtn.onClick.RemoveListener(ClosePanel);
-            if (slots != null)
-            {
-                foreach (var slot in slots)
-                    if (slot?.slotButton != null)
-                        slot.slotButton.onClick.RemoveAllListeners();
-            }
+            if (resetBtn != null) resetBtn.onClick.RemoveListener(ResetAll);
+        }
+    }
+
+    [System.Serializable]
+    public sealed class PuzzleSlot
+    {
+        public Button slotButton;
+        public Image photoImage;
+        public TMP_Text photoNameText;
+        public GameObject highlightFrame;
+        public GameObject emptyPlaceholder;
+
+        public void SetPhoto(Sprite sprite, string name)
+        {
+            if (photoImage != null) { photoImage.sprite = sprite; photoImage.color = Color.white; photoImage.gameObject.SetActive(true); }
+            if (photoNameText != null) photoNameText.text = name;
+            if (emptyPlaceholder != null) emptyPlaceholder.SetActive(false);
+        }
+
+        public void SetEmpty()
+        {
+            if (photoImage != null) { photoImage.sprite = null; photoImage.color = Color.clear; }
+            if (photoNameText != null) photoNameText.text = "";
+            if (emptyPlaceholder != null) emptyPlaceholder.SetActive(true);
         }
     }
 }
