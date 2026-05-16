@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5505eadd43ebc114b9e9be075c8cb3a1, type: 3}
+  m_Name: zero
+  m_EditorClassIdentifier: VNovelizer.Runtime::CharacterProfile
+  CharacterID: zero
+  ElementSprites:
+  - Element: default
+    Sprite: {fileID: 1866709893103116950, guid: e4e065e529d91e34fa0c02a23f525404, type: 3}
+  - Element: angry
+    Sprite: {fileID: 8056896445207515358, guid: 3eca52b254c138a4f8aecb270ab37fa0, type: 3}
+  - Element: bad
+    Sprite: {fileID: 8396816950570568204, guid: 21b4ce88e7ac268468aec35d393e68fe, type: 3}
+  - Element: doki
+    Sprite: {fileID: 8067214454743994933, guid: 666ab5611eb4f8a449a216ff5f1d2f39, type: 3}
+  - Element: happy
+    Sprite: {fileID: -6722195398834778334, guid: 66c7473acc34c8b4984d35ed4a4529c1, type: 3}
+  - Element: hurt
+    Sprite: {fileID: 5519419319505526356, guid: 509b2e59678923a4c9921403569be23a, type: 3}
+  - Element: sad
+    Sprite: {fileID: -1149517338376957125, guid: d7ce463dc73b86f44bcf80f1e01a215a, type: 3}
+  - Element: scare
+    Sprite: {fileID: -620666285110202124, guid: 9d8795336cb443e408a92ba91d094af4, type: 3}
+  - Element: serious
+    Sprite: {fileID: -4832163642591543281, guid: 43e072d31e23f1a4188a543c95b6a666, type: 3}
+  - Element: suprise
+    Sprite: {fileID: 4757605923279942361, guid: 3f19d82f4c867304c9d36cef500f78f6, type: 3}
+  HeadSprites: []
+  SpeakerBox: {fileID: 0}
+  HeadFrame: {fileID: 0}
+  scale: 0.2
+  offset: {x: 0, y: 0}

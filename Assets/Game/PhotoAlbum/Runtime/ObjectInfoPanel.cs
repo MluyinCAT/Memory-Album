@@ -14,6 +14,7 @@ namespace MemoryAlbum.PhotoAlbum
         [SerializeField] private Button closeBtn;
 
         public bool IsShowing => rootGroup != null && rootGroup.activeSelf;
+        private float _showTime;
 
         protected override void Awake()
         {
@@ -25,6 +26,8 @@ namespace MemoryAlbum.PhotoAlbum
         private void Update()
         {
             if (!IsShowing) return;
+            // 显示后0.3秒内不响应点击关闭，防止和触发显示的是同一个点击
+            if (Time.time - _showTime < 0.3f) return;
             if (Mouse.current?.leftButton.wasPressedThisFrame == true
                 && EventSystem.current != null
                 && !EventSystem.current.IsPointerOverGameObject())
@@ -45,6 +48,7 @@ namespace MemoryAlbum.PhotoAlbum
             if (nameText != null) nameText.text = speaker;
             if (descriptionText != null) descriptionText.text = text;
             if (rootGroup != null) rootGroup.SetActive(true);
+            _showTime = Time.time;
         }
 
         public void HideInfo()

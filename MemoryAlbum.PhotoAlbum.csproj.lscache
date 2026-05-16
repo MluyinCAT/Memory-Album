@@ -54,11 +54,13 @@ Assets/Game/PhotoAlbum/Runtime/
  CameraModeController.cs
  ClickableObject.cs
  DialogPopup.cs
+ DraggablePhoto.cs
  ObjectInfoPanel.cs
  PhotoAlbumData.cs
  PhotoAlbumManager.cs
  PhotoAlbumPanel.cs
  PhotoCaptureController.cs
+ PhotoDropTarget.cs
  PhotoExplorationUI.cs
  PhotoPuzzleData.cs
  PhotoPuzzlePanel.cs

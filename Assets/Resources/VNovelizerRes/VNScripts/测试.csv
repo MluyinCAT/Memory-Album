@@ -1,2 +1,2 @@
 ID,Speaker,HeadProfile,CharLeft,CharMid,CharRight,Text,Background,BGM,Voice,Command,Note
-0001,菲比,菲比_红莲大头,菲比_default,hide,hide,你好，世界！,病房,,,"charjump(L,0.5,5,50)",测试剧本11
+0001,菲比,hide,菲比_default,hide,hide,你好，世界！,病房,,,"charjump(L,0.5,5,50)",测试剧本11

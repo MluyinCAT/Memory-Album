@@ -16,9 +16,11 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void Awake()
         {
-            // 仅在新游戏时重置状态（避免返回场景时清空已收集的照片）
-            if (!VNovelizer.Core.API.VNAPI.GetBoolFlag("photo_session_started"))
+            bool started = VNovelizer.Core.API.VNAPI.GetBoolFlag("photo_session_started");
+            Debug.Log("[Init] photo_session_started=" + started);
+            if (!started)
             {
+                Debug.Log("[Init] 新游戏，执行 ResetAllPhotos");
                 PhotoAlbumManager.GetInstance().ResetAllPhotos();
                 VNovelizer.Core.API.VNAPI.SetBoolFlag("photo_session_started", true);
             }
@@ -44,8 +46,11 @@ namespace MemoryAlbum.PhotoAlbum
             }
 
             // 首次进入显示引导
-            if (!VNovelizer.Core.API.VNAPI.GetBoolFlag("tutorial_shown"))
+            bool tutShown = VNovelizer.Core.API.VNAPI.GetBoolFlag("tutorial_shown");
+            Debug.Log("[Init] tutorial_shown=" + tutShown);
+            if (!tutShown)
             {
+                Debug.Log("[Init] 显示教程引导");
                 yield return new WaitForSeconds(0.5f);
                 yield return ShowTutorial();
                 VNovelizer.Core.API.VNAPI.SetBoolFlag("tutorial_shown", true);
@@ -60,10 +65,10 @@ namespace MemoryAlbum.PhotoAlbum
             var steps = new (string speaker, string text)[] {
                 ("Tips", "欢迎来到零的房间。这里藏着许多记忆的碎片。"),
                 ("Tips", "点击场景中的物品可以查看它们的介绍。"),
-                ("Tips", "点击左上角的📷按钮进入拍照模式。"),
+                ("Tips", "点击左上角的[相机]按钮进入拍照模式。"),
                 ("Tips", "拍照模式中：WASD移动镜头，Q/E缩放，空格键拍照，ESC退出。"),
                 ("Tips", "将目标对准屏幕中央的取景框，准星变绿时即可拍摄。"),
-                ("Tips", "拍到的回忆碎片会显示在右下角📖相册中。"),
+                ("Tips", "拍到的回忆碎片会显示在右下角[相册]相册中。"),
                 ("Tips", "收集全部碎片后，在相册中排列它们，揭开真相吧。"),
             };
 

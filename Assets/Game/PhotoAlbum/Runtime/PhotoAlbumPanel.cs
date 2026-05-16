@@ -74,11 +74,10 @@ namespace MemoryAlbum.PhotoAlbum
                     photoSlots[i].slotButton.onClick.AddListener(() => OnSlotClicked(index));
             }
 
-            // Wire ClueBoard puzzle slots
+            // Wire ClueBoard puzzle slots + drag/drop
             var pzPanel = GetComponent<PhotoPuzzlePanel>();
             if (pzPanel != null)
             {
-                // Auto-detect puzzle slots from ClueBoard children
                 var cb = transform.Find("ClueBoard");
                 var pzSlots = typeof(PhotoPuzzlePanel).GetField("slots",
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
@@ -100,6 +99,42 @@ namespace MemoryAlbum.PhotoAlbum
                         ?.SetValue(pzPanel, pzList.ToArray());
                 }
                 pzPanel.WireSlotClicks();
+
+                // Wire drop targets on ClueBoard slots (uses same button clicks + drag-drop)
+                var pzAllSlots = typeof(PhotoPuzzlePanel).GetField("slots",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    ?.GetValue(pzPanel) as PuzzleSlot[];
+                if (pzAllSlots != null)
+                {
+                    for (int i = 0; i < pzAllSlots.Length; i++)
+                    {
+                        if (pzAllSlots[i]?.slotButton == null) continue;
+                        var drop = pzAllSlots[i].slotButton.gameObject.AddComponent<PhotoDropTarget>();
+                        drop.slotIndex = i;
+                        int idx = i;
+                        drop.onDrop = (di) => {
+                            Debug.Log("[Drop] Lambda: held=" + pzPanel.HeldPhotoId);
+                            if (!string.IsNullOrEmpty(pzPanel.HeldPhotoId))
+                            {
+                                pzPanel.PlacePhoto(di, pzPanel.HeldPhotoId);
+                                pzPanel.ClearHeld();
+                                Debug.Log("[Drop] Placed photo " + pzPanel.HeldPhotoId + " at slot " + di);
+                            }
+                        };
+                    }
+                }
+            }
+
+            // Wire draggable photos on FilmStrip slots
+            for (int i = 0; i < photoSlots.Length; i++)
+            {
+                if (photoSlots[i]?.slotButton == null) continue;
+                var drag = photoSlots[i].slotButton.gameObject.AddComponent<DraggablePhoto>();
+                // Use PhotoAlbumManager's photo IDs directly
+                drag.photoId = _albumManager.AllPhotoIds.Count > i ? _albumManager.AllPhotoIds[i] : "";
+                int idx = i;
+                drag.onClicked = (id) => OnSlotClicked(idx);
+                drag.onDragStart = (id) => { pzPanel?.PickUpPhoto(id); };
             }
         }
 
@@ -135,12 +170,7 @@ namespace MemoryAlbum.PhotoAlbum
             var entry = albumData.entries[index];
             if (!_albumManager.IsPhotoCollected(entry.photoId)) return;
 
-            // 选取照片：通知 PuzzlePanel
-            var puzzle = GetComponent<PhotoPuzzlePanel>();
-            if (puzzle != null)
-            {
-                puzzle.PickUpPhoto(entry.photoId);
-            }
+            ShowDetail(entry);
         }
 
         private void ShowDetail(PhotoEntry entry)

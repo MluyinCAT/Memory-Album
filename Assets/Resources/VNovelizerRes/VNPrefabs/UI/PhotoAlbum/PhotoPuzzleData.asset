@@ -20,7 +20,7 @@ MonoBehaviour:
     - photo_04
     - photo_01
     - photo_05
-    endingScriptName: CorrectAnswer_1
+    endingScriptName: "\u7ED3\u5C40A"
   - photoOrder:
     - photo_02
     - photo_03
@@ -28,7 +28,7 @@ MonoBehaviour:
     - photo_04
     - photo_01
     - photo_05
-    endingScriptName: CorrectAnswer_1
+    endingScriptName: "\u7ED3\u5C40B"
   - photoOrder:
     - photo_03
     - photo_06
@@ -36,7 +36,7 @@ MonoBehaviour:
     - photo_04
     - photo_01
     - photo_05
-    endingScriptName: CorrectAnswer_2
+    endingScriptName: "\u7ED3\u5C40C"
   - photoOrder:
     - photo_01
     - photo_02
@@ -44,15 +44,7 @@ MonoBehaviour:
     - photo_06
     - photo_04
     - photo_05
-    endingScriptName: CorrectAnswer_3
-  - photoOrder:
-    - photo_01
-    - photo_03
-    - photo_06
-    - photo_02
-    - photo_04
-    - photo_05
-    endingScriptName: CorrectAnswer_4
+    endingScriptName: "\u7ED3\u5C40D"
   errorChecks:
   - priority: 1
     condition: '!pos:photo_05,5'

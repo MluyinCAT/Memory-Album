@@ -35,12 +35,22 @@ namespace MemoryAlbum.PhotoAlbum
             _heldPhotoId = null;
         }
 
+        public string HeldPhotoId => _heldPhotoId;
+
         public void PickUpPhoto(string photoId)
         {
-            // Already holding something? Put it back
             if (!string.IsNullOrEmpty(_heldPhotoId))
                 ReturnPhoto(_heldPhotoId);
             _heldPhotoId = photoId;
+            RefreshAllSlots();
+        }
+
+        public void PlacePhoto(int slotIndex, string photoId)
+        {
+            if (slotIndex < 0 || slotIndex >= _placedPhotoIds.Length) return;
+            if (!string.IsNullOrEmpty(_placedPhotoIds[slotIndex]))
+                ReturnPhoto(_placedPhotoIds[slotIndex]);
+            _placedPhotoIds[slotIndex] = photoId;
             RefreshAllSlots();
         }
 
@@ -78,11 +88,15 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void RefreshAllSlots()
         {
+            Debug.Log("[Puzzle] RefreshAllSlots albumData=" + (albumData != null) + " entries=" + (albumData != null ? albumData.entries.Count : 0));
             for (int i = 0; i < slots.Length; i++)
             {
                 if (slots[i] == null) continue;
                 var pid = _placedPhotoIds[i];
-                if (!string.IsNullOrEmpty(pid) && albumData != null && albumData.TryGetEntry(pid, out var entry))
+                PhotoEntry entry = null;
+                bool hasEntry = !string.IsNullOrEmpty(pid) && albumData != null && albumData.TryGetEntry(pid, out entry);
+                Debug.Log("[Puzzle] Slot[" + i + "] pid=" + (pid ?? "null") + " hasEntry=" + hasEntry);
+                if (hasEntry && entry != null)
                     slots[i].SetPhoto(entry.photoSprite, entry.photoName);
                 else
                     slots[i].SetEmpty();

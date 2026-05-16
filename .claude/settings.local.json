@@ -100,7 +100,10 @@
       "Bash(sed -i 's/1111,,hide,hide,zero-default,hide,我只能这样祈祷着。,医院病房,,,,/1111,,hide,hide,zero-default,hide,我只能这样祈祷着。,医院病房,,,loadscene\\(VNMainMenu\\),/' 结局1.csv)",
       "Bash(sed -i 's/1088,,hide,hide,hide,hide,我只能这样祈祷着。,医院1202号病房,,,,/1088,,hide,hide,hide,hide,我只能这样祈祷着。,医院1202号病房,,,loadscene\\(VNMainMenu\\),/' 结局2.csv)",
       "Bash(awk '{print $6,$7,$8,$9}')",
-      "Bash(git -C \"g:/unity projects/Memory Album\" add -A)"
+      "Bash(git -C \"g:/unity projects/Memory Album\" add -A)",
+      "mcp__unityMCP__manage_build",
+      "mcp__unityMCP__get_test_job",
+      "Bash(git -C \"g:/unity projects/Memory Album\" checkout -- \"Assets/Resources/VNovelizerRes/VNPrefabs/UI/MainMenu/MainMenuPanel.prefab\")"
     ],
     "additionalDirectories": [
       "g:\\unity projects\\Memory Album\\Assets\\Resources\\NaninovelData"
