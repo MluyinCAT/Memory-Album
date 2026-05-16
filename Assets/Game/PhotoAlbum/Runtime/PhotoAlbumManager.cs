@@ -69,6 +69,7 @@ namespace MemoryAlbum.PhotoAlbum
             VNAPI.SetBoolFlag(PuzzleUnlockedFlag, false);
             VNAPI.SetBoolFlag("photo_session_started", false);
             VNAPI.SetBoolFlag("read_doll", false);
+            VNAPI.SetBoolFlag("tutorial_shown", false);
         }
     }
 }

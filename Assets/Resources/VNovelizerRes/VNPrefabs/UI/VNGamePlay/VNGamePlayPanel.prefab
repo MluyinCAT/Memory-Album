@@ -550,6 +550,7 @@ MonoBehaviour:
   headFrame: {fileID: 2551241829472036425}
   headProfileTransform: {fileID: 2840190626042144794}
   defaultSpeakerBoxSprite: {fileID: 6893988830515930378, guid: 47d951f5566d8f74693eaa49a954d974, type: 3}
+  defaultHeadFrameSprite: {fileID: 0}
   continueIcon: {fileID: 7708845275496916025}
   autoButton: {fileID: 4387887675817976286}
   skipButton: {fileID: 9109614004443322233}
@@ -1012,11 +1013,11 @@ PrefabInstance:
     - target: {fileID: 4135129668115693282, guid: 81cb8b017275a234486a5b8e42687a0d, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: caaa4a597dc7cf64c8285655b7615f1e, type: 2}
+      objectReference: {fileID: 11400000, guid: 620418aa1dec944438ba51226e1f7989, type: 2}
     - target: {fileID: 4135129668115693282, guid: 81cb8b017275a234486a5b8e42687a0d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -5726200937258273782, guid: caaa4a597dc7cf64c8285655b7615f1e, type: 2}
+      objectReference: {fileID: 3844900714704984392, guid: 620418aa1dec944438ba51226e1f7989, type: 2}
     - target: {fileID: 4135129668115693282, guid: 81cb8b017275a234486a5b8e42687a0d, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1269,11 +1270,11 @@ PrefabInstance:
     - target: {fileID: 1407942887027959404, guid: a5e98d0a952a1f24ab05145915e08bca, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: caaa4a597dc7cf64c8285655b7615f1e, type: 2}
+      objectReference: {fileID: 11400000, guid: 620418aa1dec944438ba51226e1f7989, type: 2}
     - target: {fileID: 1407942887027959404, guid: a5e98d0a952a1f24ab05145915e08bca, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -5726200937258273782, guid: caaa4a597dc7cf64c8285655b7615f1e, type: 2}
+      objectReference: {fileID: 3844900714704984392, guid: 620418aa1dec944438ba51226e1f7989, type: 2}
     - target: {fileID: 1407942887027959404, guid: a5e98d0a952a1f24ab05145915e08bca, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1403,9 +1404,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8462896114785520701, guid: a5e98d0a952a1f24ab05145915e08bca, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462896114785520701, guid: a5e98d0a952a1f24ab05145915e08bca, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7499467746075850657, guid: 2839587b3e30383469caee8a75538a00, type: 3}
+      objectReference: {fileID: -535507310919128083, guid: 897c8bca89279414eb2f8d923d08d5d7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1446,6 +1451,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6754159808278523938}
     m_Modifications:
+    - target: {fileID: 319002775188240277, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1205679193746958010, guid: c1df321327dd1354e92de2c5b0189f5c, type: 3}
     - target: {fileID: 1723737747552716436, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1526,6 +1535,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1763700014772827005, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2685612853569977427, guid: 912981651d3bcaa45b706b0f8cc8ed4e, type: 3}
     - target: {fileID: 1831696757505529016, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1574,6 +1587,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3674456413777061776, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3914350806215816784, guid: d0c5cd5460dc0614a8abc957af8f293e, type: 3}
     - target: {fileID: 4709321362630942637, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
       propertyPath: m_Type
       value: 0
@@ -1581,7 +1598,11 @@ PrefabInstance:
     - target: {fileID: 4709321362630942637, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2512128183154619787, guid: 703de7787e7d9934d854e419670eb3cf, type: 3}
+      objectReference: {fileID: 4688885603139944919, guid: e607f0c932e094b4cb603bf1cf59c5db, type: 3}
+    - target: {fileID: 5739941269842373962, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3374973371293793670, guid: 7ea42bda725c1b841b7965e94f8b9e97, type: 3}
     - target: {fileID: 8354619013304581166, guid: ae0c9315aa88b2b4a8e57cada0a496c8, type: 3}
       propertyPath: m_Name
       value: ButtonContainer

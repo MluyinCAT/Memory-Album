@@ -140,8 +140,15 @@ namespace MemoryAlbum.PhotoAlbum
 
         private void ShowHint(string message)
         {
-            var dlg = GameObject.Find("DialogPopup")?.GetComponent<DialogPopup>();
-            if (dlg != null) dlg.Show(message);
+            // 暂时隐藏相册面板，露出 ObjectInfoPanel
+            var albumRoot = GetComponentInParent<PhotoAlbumPanel>()?.gameObject;
+            if (albumRoot != null) albumRoot.SetActive(false);
+
+            var infoPanel = GameObject.Find("ObjectInfoPanel")?.GetComponent<ObjectInfoPanel>();
+            if (infoPanel != null)
+            {
+                infoPanel.ShowInfo("黎", message);
+            }
         }
 
         private void ResetAll()

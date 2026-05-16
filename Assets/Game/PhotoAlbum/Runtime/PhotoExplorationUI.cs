@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,51 @@ namespace MemoryAlbum.PhotoAlbum
                 captureBtn.onClick.AddListener(OnCaptureClicked);
             if (albumBtn != null)
                 albumBtn.onClick.AddListener(OnAlbumClicked);
+        }
+
+        private IEnumerator Start()
+        {
+            // 场景进入时淡入
+            var fade = GameObject.Find("ScreenFade")?.GetComponent<UnityEngine.UI.Image>();
+            if (fade != null)
+            {
+                fade.color = Color.black;
+                float t = 0f;
+                while (t < 1f) { t += Time.deltaTime; fade.color = new Color(0, 0, 0, 1f - t / 1f); yield return null; }
+                fade.color = new Color(0, 0, 0, 0);
+            }
+
+            // 首次进入显示引导
+            if (!VNovelizer.Core.API.VNAPI.GetBoolFlag("tutorial_shown"))
+            {
+                yield return new WaitForSeconds(0.5f);
+                yield return ShowTutorial();
+                VNovelizer.Core.API.VNAPI.SetBoolFlag("tutorial_shown", true);
+            }
+        }
+
+        private IEnumerator ShowTutorial()
+        {
+            var infoPanel = GameObject.Find("ObjectInfoPanel")?.GetComponent<ObjectInfoPanel>();
+            if (infoPanel == null) yield break;
+
+            var steps = new (string speaker, string text)[] {
+                ("Tips", "欢迎来到零的房间。这里藏着许多记忆的碎片。"),
+                ("Tips", "点击场景中的物品可以查看它们的介绍。"),
+                ("Tips", "点击左上角的📷按钮进入拍照模式。"),
+                ("Tips", "拍照模式中：WASD移动镜头，Q/E缩放，空格键拍照，ESC退出。"),
+                ("Tips", "将目标对准屏幕中央的取景框，准星变绿时即可拍摄。"),
+                ("Tips", "拍到的回忆碎片会显示在右下角📖相册中。"),
+                ("Tips", "收集全部碎片后，在相册中排列它们，揭开真相吧。"),
+            };
+
+            foreach (var step in steps)
+            {
+                infoPanel.ShowInfo(step.speaker, step.text);
+                // 等待玩家点击继续
+                while (infoPanel.IsShowing) yield return null;
+                yield return new WaitForSeconds(0.2f);
+            }
         }
 
         private void OnSettingsClicked()

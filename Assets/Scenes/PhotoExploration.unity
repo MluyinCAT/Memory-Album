@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_06
-  vnScriptName: Photo06_VN
+  vnScriptName: "\u7247\u6BB5C"
   vnStartLineID: 
   photoSprite: {fileID: -976696538675964118, guid: 26b4d04855232954a8ac18b36786faae, type: 3}
   photoName: "\u3010\u95E8\u524D\u3011"
@@ -2149,14 +2149,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6744783575394054471, guid: 78e809ee3ba8ce94ba1939b611ee384e, type: 3}
+  m_Sprite: {fileID: 8039066153110079551, guid: cb612f0a50b1b17449a6e8d31367c8b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_05
-  vnScriptName: Photo05_VN
+  vnScriptName: "\u7247\u6BB5F"
   vnStartLineID: 
   photoSprite: {fileID: -2959953537990747553, guid: 6d520134fa782b540b0052e4b7fd3bc8, type: 3}
   photoName: "\u3010\u5929\u53F0\u3011"
@@ -3180,6 +3180,7 @@ MonoBehaviour:
   nameText: {fileID: 1698978078}
   descriptionText: {fileID: 1030560084}
   rootGroup: {fileID: 1667110736}
+  closeBtn: {fileID: 0}
 --- !u!1 &1475689484
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,14 +3276,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6466559731256017749, guid: 79a7cdd283bdde84caab280256a674f3, type: 3}
+  m_Sprite: {fileID: 5973039627818057177, guid: 4f0216b05de1e66448c8f34956a40414, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3501,7 +3502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_03
-  vnScriptName: Photo03_VN
+  vnScriptName: "\u7247\u6BB5B"
   vnStartLineID: 
   photoSprite: {fileID: 8271860525846309575, guid: 44c43f9c0f9d3ba45945dfe9a6343687, type: 3}
   photoName: "\u3010\u7EA6\u4F1A\u3011"
@@ -3791,7 +3792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_01
-  vnScriptName: Photo01_VN
+  vnScriptName: "\u7247\u6BB5E"
   vnStartLineID: 
   photoSprite: {fileID: -1735826576652916640, guid: c612398bb2aaeaa4f8799b41f0d5e280, type: 3}
   photoName: "\u3010\u544A\u767D\u3011"
@@ -4382,7 +4383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_04
-  vnScriptName: Photo04_VN
+  vnScriptName: "\u7247\u6BB5D"
   vnStartLineID: 
   photoSprite: {fileID: 5243857091098509940, guid: 33330dcdc2458574b8ce43e0b1040f75, type: 3}
   photoName: "\u3010\u72EC\u767D\u3011"
@@ -4621,7 +4622,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1747, y: -548}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 1.5, y: 0.9604}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1947357777
 MonoBehaviour:
@@ -4680,14 +4681,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6428986081423258225, guid: 55780b97744577647b6a437f2939bce7, type: 3}
+  m_Sprite: {fileID: 5968263453520874760, guid: 10c994a7cfc590947aaf5b0554cfe5a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5123,7 +5124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoTarget
   photoId: photo_02
-  vnScriptName: Photo02_VN
+  vnScriptName: "\u7247\u6BB5A"
   vnStartLineID: 
   photoSprite: {fileID: 346722570245876495, guid: ddec18246f8ef14438ed43706cdfd593, type: 3}
   photoName: "\u3010\u547D\u8FD0\u3011"

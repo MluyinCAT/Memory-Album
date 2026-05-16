@@ -14,13 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: MemoryAlbum.PhotoAlbum::MemoryAlbum.PhotoAlbum.PhotoPuzzleData
   validSequences:
   - photoOrder:
+    - photo_02
+    - photo_03
+    - photo_06
+    - photo_04
+    - photo_01
+    - photo_05
+    endingScriptName: CorrectAnswer_1
+  - photoOrder:
+    - photo_02
+    - photo_03
+    - photo_06
+    - photo_04
+    - photo_01
+    - photo_05
+    endingScriptName: CorrectAnswer_1
+  - photoOrder:
+    - photo_03
+    - photo_06
+    - photo_02
+    - photo_04
+    - photo_01
+    - photo_05
+    endingScriptName: CorrectAnswer_2
+  - photoOrder:
     - photo_01
     - photo_02
     - photo_03
     - photo_06
     - photo_04
     - photo_05
-    endingScriptName: Ending_A
+    endingScriptName: CorrectAnswer_3
   - photoOrder:
     - photo_01
     - photo_03
@@ -28,7 +52,7 @@ MonoBehaviour:
     - photo_02
     - photo_04
     - photo_05
-    endingScriptName: Ending_B
+    endingScriptName: CorrectAnswer_4
   errorChecks:
   - priority: 1
     condition: '!pos:photo_05,5'
@@ -53,24 +77,19 @@ MonoBehaviour:
     - "\u7247\u6BB5\u3010\u72EC\u767D\u3011\u4E2D\u63D0\u5230\u4E86\"\u5199\u7740\u4E0D\u8BA4\u8BC6\u7684\u5916\u6587\u7684\u5DE7\u514B\u529B\"\uFF0C\u8FD9\u662F\u4E0D\u662F\u67D0\u4E2A\u7247\u6BB5\u7684\u5185\u5BB9\u2014\u2014"
     - "\u6211\u60F3\u8D77\u6765\u4E86\uFF0C\u662F\u7247\u6BB5\u3010\u7EA6\u4F1A\u3011\u7684\uFF0C\u90A3\u3010\u72EC\u767D\u3011\u5E94\u8BE5\u5728\u3010\u7EA6\u4F1A\u3011\u540E\u9762"
   - priority: 5
-    condition: exact:photo_02,photo_03,photo_06,photo_01,photo_04,photo_05
-    hints:
-    - "\u662F\u4E0D\u662F\u641E\u9519\u903B\u8F91\u4E86\u2026\u2026"
-    - "\u3010\u544A\u767D\u3011\u548C\u3010\u72EC\u767D\u3011\u4E0D\u53EF\u80FD\u7D27\u5BC6\u8FD9\u6837\u6328\u5728\u4E00\u8D77"
-  - priority: 5
     condition: exact:photo_02,photo_01,photo_03,photo_06,photo_04,photo_05
     hints:
     - "\u662F\u4E0D\u662F\u592A\u79BB\u8C31\u4E86\u2026\u2026"
-    - "\u5982\u679C\u3010\u544A\u767D\u3011\u5728\u3010\u547D\u8FD0\u3011\u548C\u3010\u7EA6\u4F1A\u3011\u4E2D\u95F4\uFF0C\u90A3\u3010\u7EA6\u4F1A\u3011\u91CC\u96F6\u548C\u7A7A\u804A\u5929\u65F6\u63D0\u5230\u78A7\u4EE5\u53CA\u96F6\u5BF9\u78A7\u7684\u611F\u60C5\u662F\u4E0D\u662F\u592A\u6B63\u5E38\u4E86\u2026\u2026"
+    - "\u5982\u679C\u3010\u544A\u767D\u3011\u662F\u5728\u3010\u547D\u8FD0\u3011\u548C\u3010\u7EA6\u4F1A\u3011\u4E2D\u95F4\uFF0C\u90A3\u3010\u7EA6\u4F1A\u3011\u91CC\u96F6\u8DDF\u7A7A\u804A\u5929\u65F6\u63D0\u5230\u7684\u78A7\u4EE5\u53CA\u96F6\u5BF9\u78A7\u7684\u611F\u60C5\u662F\u4E0D\u662F\u592A\u6B63\u5E38\u4E86\u2026\u2026"
   - priority: 5
     condition: exact:photo_03,photo_06,photo_02,photo_01,photo_04,photo_05
     hints:
     - "\u662F\u4E0D\u662F\u641E\u9519\u903B\u8F91\u4E86\u2026\u2026"
-    - "\u3010\u544A\u767D\u3011\u548C\u3010\u72EC\u767D\u3011\u4E0D\u53EF\u80FD\u7D27\u5BC6\u8FD9\u6837\u6328\u5728\u4E00\u8D77"
+    - "\u3010\u544A\u767D\u3011\u548C\u3010\u72EC\u767D\u3011\u4E0D\u53EF\u80FD\u7D27\u5BC6\u4EE5\u8FD9\u4E2A\u987A\u5E8F\u6328\u5728\u4E00\u8D77\uFF0C\u4E0D\u7136\u5728\u3010\u544A\u767D\u3011\u91CC\u96F6\u88AB\u8868\u767D\u540E\u3010\u72EC\u767D\u3011\u91CC\u4E0D\u4F1A\u4E0D\u63D0\u5230\u8FD9\u4EF6\u4E8B"
   - priority: 5
     condition: exact:photo_03,photo_06,photo_01,photo_02,photo_04,photo_05
     hints:
     - "\u662F\u4E0D\u662F\u641E\u9519\u52A8\u673A\u4E86\u2026\u2026"
-    - "\u3010\u547D\u8FD0\u3011\u4E4B\u540E\u5C31\u63A5\u3010\u72EC\u767D\u3011\u5F88\u5947\u602A\uFF0C\u7F3A\u4E4F\u52A8\u673A"
+    - "\u3010\u547D\u8FD0\u3011\u4E4B\u540E\u5C31\u63A5\u3010\u72EC\u767D\u3011\u5F88\u5947\u602A\uFF0C\u4E0D\u7136\u3010\u72EC\u767D\u3011\u7F3A\u4E4F\u52A8\u673A\uFF0C\u800C\u4E14\u8FD9\u4E48\u8FDE\u8D77\u6765\u6545\u4E8B\u7EBF\u5F88\u4E71\uFF0C\u5374\u53C8\u627E\u4E0D\u5230\u4E1C\u897F\u53BB\u8FDE\u63A5\u8FD9\u79CD\u4E71\u2026\u2026"
   requiredItemFlag: read_doll
   requiredItemHint: "\u5982\u679C\u8FD9\u4E48\u60F3\u7684\u8BDD\uFF0C\u5174\u8BB8\u6709\u70B9\u9053\u7406\u2014\u2014\n\u4E0D\uFF0C\u8FD8\u5DEE\u4E00\u4E2A\u5173\u952E\u6027\u8BC1\u636E\u2014\u2014\u4E0D\u7136\u4E0B\u5B9A\u8BBA\u592A\u65E9\u4E86\u3002\n\u518D\u8C03\u67E5\u4E0B\u623F\u95F4\u5427\u3002"

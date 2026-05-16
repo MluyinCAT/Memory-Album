@@ -1,4 +1,0 @@
-ID,Speaker,HeadProfile,CharLeft,CharMid,CharRight,Text,Background,BGM,Voice,Command,Note
-S001,,hide,hide,hide,hide,你仔细端详着眼前的物品，一段记忆浮现了出来…,,,false,,测试剧本待替换
-S002,,hide,hide,hide,hide,（这是占位文本，请替换为实际剧情内容。）,,,false,,测试文本2
-S003,,hide,hide,hide,hide,记忆渐渐淡去，你回到了现实。,,,false,loadscene(PhotoExploration),返回探索

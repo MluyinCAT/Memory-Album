@@ -16,24 +16,25 @@ MonoBehaviour:
   - photoId: photo_01
     photoSprite: {fileID: -1735826576652916640, guid: c612398bb2aaeaa4f8799b41f0d5e280, type: 3}
     photoName: "\u624B\u63D0\u5305"
-    photoDescription: "\u4E00\u4E2A\u65E7\u624B\u63D0\u5305\uFF0C\u91CC\u9762\u4F3C\u4E4E\u8FD8\u88C5\u7740\u4EC0\u4E48\u4E1C\u897F\u3002"
+    photoDescription: "\u4E00\u4E2A\u88C5\u7740\u5B66\u4E60\u8D44\u6599\u7684\u624B\u63D0\u5305\uFF0C\u5E95\u90E8\u6709\u4E9B\u4E0D\u81EA\u7136\u7684\u78E8\u635F\uFF0C\u4F3C\u4E4E\u88AB\u7528\u529B\u6454\u8FC7\u3002"
   - photoId: photo_02
     photoSprite: {fileID: 346722570245876495, guid: ddec18246f8ef14438ed43706cdfd593, type: 3}
     photoName: "\u6DF1\u84DD\u96E8\u4F1E"
-    photoDescription: "\u4E00\u628A\u6DF1\u84DD\u8272\u7684\u96E8\u4F1E\uFF0C\u66FE\u7ECF\u4E3A\u67D0\u4EBA\u906E\u98CE\u6321\u96E8\u3002"
+    photoDescription: "\u4E00\u628A\u7C89\u8272\u7684\u957F\u67C4\u96E8\u4F1E\u3002\u867D\u7136\u6837\u5F0F\u968F\u5904\u53EF\u89C1\uFF0C\u4F46\u4F3C\u4E4E\u5BF9\u67D0\u4EBA\u6709\u522B\u6837\u7684\u610F\u4E49\u3002"
   - photoId: photo_03
     photoSprite: {fileID: 8271860525846309575, guid: 44c43f9c0f9d3ba45945dfe9a6343687, type: 3}
     photoName: "\u7CBE\u7F8E\u5DE7\u514B\u529B"
-    photoDescription: "\u4E00\u76D2\u5305\u88C5\u7CBE\u7F8E\u7684\u5DE7\u514B\u529B\uFF0C\u4E1D\u5E26\u5DF2\u7ECF\u892A\u8272\u3002"
+    photoDescription: "\u4E00\u5305\u5199\u7740\u5916\u6587\u7684\u5DE7\u514B\u529B\uFF0C\u4ED4\u7EC6\u8FA8\u8BA4\u540E\u5199\u7740Ich
+      liebe dich\uFF08\u6211\u7231\u4F60\uFF09\u3002"
   - photoId: photo_04
     photoSprite: {fileID: 5243857091098509940, guid: 33330dcdc2458574b8ce43e0b1040f75, type: 3}
     photoName: "\u6DF1\u7EA2\u9886\u5E26"
-    photoDescription: "\u4E00\u6761\u6DF1\u7EA2\u8272\u9886\u5E26\uFF0C\u50CF\u662F\u91CD\u8981\u573A\u5408\u7684\u88C5\u675F\u3002"
+    photoDescription: "\u548C\u5236\u670D\u914D\u5957\u7684\u9886\u5E26\uFF0C\u4E0D\u77E5\u9053\u4E3A\u4EC0\u4E48\u88AB\u968F\u610F\u4E22\u5F03\u5728\u8FD9\u91CC\u3002"
   - photoId: photo_05
     photoSprite: {fileID: -2959953537990747553, guid: 6d520134fa782b540b0052e4b7fd3bc8, type: 3}
     photoName: "\u65E7\u6821\u670D"
-    photoDescription: "\u4E00\u4EF6\u6821\u670D\uFF0C\u8896\u53E3\u5904\u6709\u78E8\u635F\u7684\u75D5\u8FF9\u3002"
+    photoDescription: "\u4E00\u4EF6\u53E0\u653E\u6574\u9F50\u7684\u6821\u670D\uFF0C\u8896\u53E3\u5904\u6709\u4E9B\u8BB8\u78E8\u635F\u7684\u75D5\u8FF9\u3002"
   - photoId: photo_06
     photoSprite: {fileID: -976696538675964118, guid: 26b4d04855232954a8ac18b36786faae, type: 3}
     photoName: "\u836F\u54C1\u7F50"
-    photoDescription: "\u4E00\u53EA\u6DF1\u8910\u8272\u836F\u74F6\uFF0C\u6807\u7B7E\u5DF2\u7ECF\u6CDB\u9EC4\u3002"
+    photoDescription: "\u4E00\u4E2A\u88C5\u7740\u84DD\u8272\u80F6\u56CA\u7684\u900F\u660E\u836F\u54C1\u7F50\uFF0C\u4F3C\u4E4E\u4E0D\u662F\u836F\u54C1\u7684\u539F\u59CB\u5305\u88C5\u3002"
